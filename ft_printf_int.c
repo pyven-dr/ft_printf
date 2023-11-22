@@ -14,7 +14,7 @@
 
 static int	add_i(int n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (n < 0)

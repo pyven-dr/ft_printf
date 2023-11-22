@@ -6,7 +6,7 @@
 /*   By: pyven-dr <pyven-dr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:47:02 by pyven-dr          #+#    #+#             */
-/*   Updated: 2023/11/21 19:23:53 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2023/11/22 09:51:54 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ static int	conversion(char arg, va_list ap, int *i)
 			"0123456789ABCDEF", &*i));
 	else if (arg == '%')
 		return (ft_putchar('%', &*i));
-	return (-1);
+	if (write(1, "%", 1) == -1 || \
+		write(1, &arg, 1) == -1)
+		return (-1);
+	*i += 2;
+	return (0);
 }
 
 int	ft_printf(const	char *format, ...)
