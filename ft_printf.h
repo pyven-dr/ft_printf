@@ -24,6 +24,5 @@ int	ft_printf_int(int n, int *i);
 int	ft_printf_unsigned(unsigned int n, int *i);
 int	ft_putnbr_hex(unsigned int nbr, char *base, int *i);
 int	ft_print_adress(unsigned long adress, int *i, char *base);
-int	ft_strchr(const char *s, int c);
 
 #endif
