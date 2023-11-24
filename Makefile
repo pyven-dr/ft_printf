@@ -5,7 +5,7 @@ CFILES = ft_printf.c \
 		ft_printf_unsigned.c \
 		ft_putnbr_hex.c \
 		ft_print_adress.c \
-		ft_strchr.c
+		ft_strlen.c
 
 
 OFILES = $(CFILES:.c=.o)

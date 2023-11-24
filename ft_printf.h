@@ -17,12 +17,13 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
-int	ft_printf(const	char *format, ...);
-int	ft_putchar(char c, int *i);
-int	ft_putstr(char *s, int *i);
-int	ft_printf_int(int n, int *i);
-int	ft_printf_unsigned(unsigned int n, int *i);
-int	ft_putnbr_hex(unsigned int nbr, char *base, int *i);
-int	ft_print_adress(unsigned long adress, int *i, char *base);
+int		ft_printf(const	char *format, ...);
+int		ft_putchar(char c, int *i);
+int		ft_putstr(char *s, int *i);
+int		ft_printf_int(int n, int *i);
+int		ft_printf_unsigned(unsigned int n, int *i);
+int		ft_putnbr_hex(unsigned int nbr, char *base, int *i);
+int		ft_print_adress(unsigned long adress, int *i, char *base);
+size_t	ft_strlen(const char *s);
 
 #endif
