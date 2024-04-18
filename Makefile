@@ -1,35 +1,51 @@
-CFILES = ft_printf.c \
-		ft_printf_int.c \
-		ft_putstr.c \
-		ft_putchar.c \
-		ft_printf_unsigned.c \
-		ft_putnbr_hex.c \
-		ft_print_adress.c \
-		ft_strlen.c
+SRC = ft_print_adress.c \
+	  ft_printf_int.c \
+	  ft_putchar.c \
+	  ft_putstr.c \
+	  ft_printf.c \
+	  ft_printf_unsigned.c \
+	  ft_putnbr_hex.c \
+	  ft_strlen.c
 
+SRC_DIR = src
 
-OFILES = $(CFILES:.c=.o)
+BUILD_DIR = .build
+
+INCLUDE_DIR = include
+
+OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
+
+DEP = $(OBJ:.o=.d)
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+DFLAGS = -MD -MP
+
+IFLAGS = -I $(INCLUDE_DIR)
+
 NAME = libftprintf.a
 
+.PHONY: all
 all: $(NAME)
 
-$(NAME): $(OFILES)
-	ar crs $(NAME) $(OFILES)
+$(NAME): $(OBJ)
+	ar crs $(NAME) $(OBJ)
 
-%.o: %.c ft_printf.h
-	$(CC) $(CFLAGS) -c $< -o $@
+-include $(DEP)
 
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS) -c $< -o $@
+
+.PHONY: clean
 clean:
-	rm -f $(OFILES)
+	$(RM) -r $(BUILD_DIR)
 
+.PHONY: fclean
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
+.PHONY: re
 re: fclean all
-
-.PHONY: clean fclean re all bonus
